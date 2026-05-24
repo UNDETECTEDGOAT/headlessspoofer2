@@ -1,7 +1,9 @@
-local humanoid = character:FindFirstChildOfClass("Humanoid")
+local Name = game.Players.LocalPlayer.Name
+local Head = game.Workspace:WaitForChild(Name).Head
 
-if humanoid then
-    local desc = humanoid:GetAppliedDescription()
-    desc.HeadScale = 0
-    humanoid:ApplyDescription(desc)
+if Head then
+	Head.Size = Vector3.new(0,0,0)
+	notify("Loaded", 1)
+else
+	notify("Failed", 1)
 end
