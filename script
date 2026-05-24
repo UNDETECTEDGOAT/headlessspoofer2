@@ -1,23 +1,7 @@
-local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
+local humanoid = character:FindFirstChildOfClass("Humanoid")
 
-local player = Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-
-local head = character:WaitForChild("Head")
-
-local function hideHead()
-    -- Hide the head
-    head.Transparency = 1
-
-    -- Hide face decals
-    for _, obj in ipairs(head:GetChildren()) do
-        if obj:IsA("Decal") then
-            obj.Transparency = 1
-        end
-    end
+if humanoid then
+    local desc = humanoid:GetAppliedDescription()
+    desc.HeadScale = 0
+    humanoid:ApplyDescription(desc)
 end
-
-hideHead()
-
-RunService.RenderStepped:Connect(hideHead)
